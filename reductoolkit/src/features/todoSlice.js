@@ -17,15 +17,13 @@ export const todoSlice = createSlice({
         },
         removeTodo : (state , action) => {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload) 
-         } //,
-        // updateTodo : (state,action) => {
-        //     state.todos.map((todo) => {
-        //         if(todo.id === action.id){
-        //             todo.msg = "Job Done"
-        //         }
-        //     })
-        // }
-    }
+         } ,
+        updateTodo : (state,action) => {
+            state.todos = state.todos.map((todo) => todo.id !== action.payload ? todo.msg = action.payload : todo.msg = action.payload)
+                    // state.todos.push(todo)
+                }
+            
+        }
 })
 
 // exporting individual functionality which we can use in components

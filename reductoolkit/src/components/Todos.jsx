@@ -8,19 +8,17 @@ export default function Todos(){
     // Now we have to bring todo array from the store 
     const todos = useSelector(state => state.todos)   // in this method we get the access of the state in a call back
     const dispatch = useDispatch()
-
-    const updateHandler =() => {
-    console.log("Please continue from here")
-    }
+    // const [edit,setEdit] = useState("")
 
     return(
        <>
        <div>Todos</div>
-       <ul className="list-none">
+       <ul className="list-none bg-yellow-500">
        {todos.map((todo)=>(
+    
            <li key={todo.id} className="flex m-3 p-2">
              <div className="bg-pink-300 m-4 p-4"> {todo.msg}</div>
-             <button className="bg-green-500" onClick={updateHandler}>Update</button>
+             <button className="bg-green-500" onClick={() => dispatch(updateTodo(todo))}>Update</button>
               <button className="bg-red-500" onClick={() => dispatch(removeTodo(todo.id))}>Delete</button>
            </li>
        ))}
